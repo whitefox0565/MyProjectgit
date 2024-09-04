@@ -12,7 +12,7 @@
 <img src="https://github.com/user-attachments/assets/8fddf521-22bb-4c3c-9860-7cd0671eedd6" width="500" height="500">
 ![signUpFail1]()
 <h3>가입시 조건 성공</h3>
-<img src="https://github.com/user-attachments/assets/2b7d9ce6-46c3-4bea-b1c6-6d750dddd1b7">
+<img src="https://github.com/user-attachments/assets/e59dc334-b0b4-4469-abf8-9c2bec6ecdad">
 </br>
 <h2>로그인</h2>
 
