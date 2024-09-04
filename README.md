@@ -20,6 +20,6 @@
 <img src="https://github.com/user-attachments/assets/47170fc3-0812-444b-9a14-8900fbdfb860">
 <img src="https://github.com/user-attachments/assets/931ea186-ff66-4aa2-a415-1f6bed9b6d6e">
 <h2>내 자녀 등</h2>
-<img src="https://github.com/user-attachments/assets/931ea186-ff66-4aa2-a415-1f6bed9b6d6e">
+<img src="https://github.com/user-attachments/assets/bd4bc200-ac1e-474e-bfe5-53d133ae5f22">
 
 
