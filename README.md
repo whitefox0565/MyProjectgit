@@ -29,6 +29,9 @@
 <img src="https://github.com/user-attachments/assets/6b41f28e-7f9d-4200-82cc-fb3c85cf00ef">
 <h2>상품 상세 및 후기</h2>
 <img src="https://github.com/user-attachments/assets/17a1d3ef-132e-4f0c-a1b6-224ec8b2444d">
+<h2>장바구니 및 결제</h2>
+<img src="https://github.com/user-attachments/assets/8909f150-7bba-4a6d-bdb3-9e597e11b8b8">
+<img src="https://github.com/user-attachments/assets/b4f1b806-4d73-4200-9e09-51fec559bdb9">
 
 
 
