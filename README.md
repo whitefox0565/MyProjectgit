@@ -26,8 +26,9 @@
 <h2>체육관 정보</h2>
 <img src="https://github.com/user-attachments/assets/0ffebbec-1e14-47fa-8756-266ff1b559b3">
 <h2>상품</h2>
-<img src="https://github.com/user-attachments/assets/0ffebbec-1e14-47fa-8756-266ff1b559b3">
+<img src="https://github.com/user-attachments/assets/6b41f28e-7f9d-4200-82cc-fb3c85cf00ef">
 <h2>상품 상세 및 후기</h2>
-<img src="https://github.com/user-attachments/assets/0ffebbec-1e14-47fa-8756-266ff1b559b3">
+<img src="https://github.com/user-attachments/assets/17a1d3ef-132e-4f0c-a1b6-224ec8b2444d">
+
 
 
