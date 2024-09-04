@@ -1,0 +1,134 @@
+#orderHistoryView {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#orderHistoryView #orderHistoryViewContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    margin-top: 50px;
+}
+
+#orderHistoryView #orderHistoryTitleBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 70px;
+}
+
+#orderHistoryView #orderHistoryTitle {
+    font-size: 38px;
+    font-weight: 600;
+    padding-bottom: 20px;
+}
+
+#orderHistoryView #orderHistorySubTitle {
+    text-align: center;
+    font-size: 19px;
+    letter-spacing: 2px;
+    font-weight: 450;
+    padding-bottom: 10px;
+    color: #a7a7a7;
+}
+
+#orderHistoryView #orderHistoryMain {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    width: 1000px; /* 너비 조정 */
+    background-color: #f7f7f7;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* 주문 항목 섹션 */
+#orderHistoryView .orderItem {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background-color: white;
+    border: 1px solid #e5e5e5;
+    border-radius: 10px;
+    gap: 50px;
+}
+
+/* 주문 항목 헤더 */
+#orderHistoryView .orderItemHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#orderHistoryView .orderDate {
+    font-size: 18px;
+    font-weight: bold;
+    color: #888;
+}
+
+#orderHistoryView .orderNumber {
+    font-size: 16px;
+    color: #555;
+}
+
+/* 상품 목록 */
+#orderHistoryView .orderItemDetails {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* 상품 상세 정보 */
+#orderHistoryView .orderItemDetail {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+#orderHistoryView .orderItemImage{
+    width: 100px;
+    height: auto;
+    max-height: 150px;
+        margin-top: 15px;
+}
+
+#orderHistoryView .orderItemInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    flex: 1;
+}
+
+#orderHistoryView .orderItemName {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 7px;
+}
+
+#orderHistoryView .orderItemSize,
+#orderHistoryView .orderItemPrice,
+#orderHistoryView .orderItemQuantity,
+#orderHistoryView .orderItemTotalPrice {
+    font-size: 16px;
+    color: #888;
+}
+
+#orderHistoryView .orderItemTotalPrice {
+    font-size: 17px;
+    color: #333;
+    font-weight: bold;
+    margin-left: auto;
+}
+
+/* 총 결제 금액 */
+#orderHistoryView .orderTotalPrice {
+    font-size: 22px;
+    font-weight: bold;
+    color: #d9534f;
+    text-align: right;
+}

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.finalProject.gym.dao.IChildDAO">
+  	<resultMap id="childResult" type="com.finalProject.gym.model.ChildVO" >
+  		<result property="childNo" column="childNo"  />
+  		<result property="childName" column="childName"  />
+	  	<result property="memId" column="memId"  />
+	  	<result property="childAge" column="childAge"  />
+	  	<result property="childSex" column="childSex"  />
+	  	<result property="childHp" column="childHp"  />
+	  	<result property="childBelt" column="childBelt"  />
+	  	<result property="deadLine" column="deadLine"  />
+	  	<result property="gymName" column="gymName"  />
+  	</resultMap>
+  	
+  	<!--내 도장 등록 자녀 불러오기-->
+  	<select id="getMyChildren" parameterType="String" resultMap="childResult">
+  		select * from child where memId = #{memId} order by childJoinDate ASC
+  	</select>
+  	
+  	<!--신규등록 확인 -->
+  	<!-- <select id="newMemberChk" parameterType="String" resultType="String">
+  		select gymName from child where memId = #{memId} and childName = #{childName}
+  	</select> -->
+  	
+  	<!--신규 등록-->
+  	<!-- <insert id="signUpGym" parameterType="com.finalProject.gym.model.ChildVO">
+  		insert child values(#{childNo}, #{childName}, #{memId}, #{childAge}, #{childSex}, #{childHp}, #{gymName}, #{childBelt}, #{deadLine}, #{award})
+  	</insert> -->
+  	
+  	<!--child 번호 중복확인-->
+  	<select id="childNoChk" parameterType="String" resultType="String">
+  		select childNo from child where childNo = #{childNo}
+  	</select>
+  	
+  	<!--회원탈퇴-->
+  	<delete id="memDeleteAccount" parameterType="String">
+  		delete from child where memId=#{memId};
+  	</delete>
+  	
+  	<!--신규 자식 등록 확인 -->
+  	<select id="newChildChk" parameterType="String" resultType="String">
+  		select childNo from child where childNo = #{childNo}
+  	</select>
+  	
+  	<!--신규 자식 등록-->
+  	<insert id="signUpChildInMyPage" parameterType="hashmap">
+  		INSERT child(childNo, childName, memId, childAge, childSex, childHp, gymName, childBelt, deadLine) 
+  		VALUES(#{childNo}, #{childName}, #{memId}, #{childAge}, #{childSex}, #{childHp}, #{gymName}, #{childBelt},  #{deadLine})
+  	</insert>
+  	
+  	<!--자식 삭제-->
+  	<delete id="myPageChildDel" parameterType="String">
+  		delete from child
+  		where childNo = #{childNo}
+  	</delete>
+  	
+  	<!--기존 자식 업데이트-->
+  	<update id="myPageChildUpdate" parameterType="hashmap">
+  		update child 
+  		set childName=#{childName}, childAge=#{childAge}, childSex=#{childSex}, childHp=#{childHp}
+  		where childNo = #{childNo}
+  	</update>
+  	
+  	<!--자식 도장 등록 확인 -->
+  	<select id="getAlreadyRegistGymName" parameterType="String" resultMap="childResult">
+  		select gymName, deadLine, childBelt from child where childNo = #{childNo}
+  	</select>
+  	
+  	<!--도장 신규 등록-->
+  	<update id="registGymNewChild" parameterType="hashmap">
+  		update child 
+  		set gymName=#{gymName}, childBelt=#{childBelt}, deadLine=#{deadLine}
+  		where childNo = #{childNo}
+  	</update>
+  	
+  	<!--자식 도장 이름 가져오기 -->
+  	<select id="getMyGymName" parameterType="String" resultType="String">
+  		SELECT DISTINCT gymName
+  		FROM child 
+  		WHERE memId = #{memId}
+  	</select>
+</mapper>

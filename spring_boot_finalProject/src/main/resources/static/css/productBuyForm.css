@@ -1,0 +1,262 @@
+#productBuyView {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#productBuyView #productBuyViewContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    margin-top: 50px;
+}
+
+#productBuyView #productBuyTitleBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 70px;
+}
+
+#productBuyView #productBuyTitle {
+    font-size: 38px;
+    font-weight: 600;
+    padding-bottom: 20px;
+}
+
+#productBuyView #productBuySubTitle {
+    text-align: center;
+    font-size: 19px;
+    letter-spacing: 2px;
+    font-weight: 450;
+    padding-bottom: 10px;
+    color: #a7a7a7;
+}
+
+#productBuyView #productBuyMain {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 1000px; /* 너비 조정 */
+}
+
+/* 주문 요약 섹션 */
+#productBuyView #orderSummary {
+    padding: 20px;
+    background: white;
+}
+
+#productBuyView .orderItem {
+    display: flex;
+    gap: 60px;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+#productBuyView .orderItem:last-child {
+    border-bottom: none;
+}
+
+#productBuyView .orderItemImage img {
+    width: 100px;
+    height: auto;
+    max-height: 150px;
+    margin-right: 20px;
+}
+
+#productBuyView .orderItemDetails {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    flex: 1;
+}
+
+#productBuyView .orderItemName {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 7px;
+}
+
+#productBuyView .orderItemOption, #productBuyView .orderItemQuantity,
+	#productBuyView .orderItemPrice, #productBuyView .orderItemTotalPrice {
+	font-size: 16px;
+	color: #888;}
+
+#productBuyView .orderItemTotalPrice {
+    margin-left: auto; /* 오른쪽 정렬 */
+    font-size: 17px;
+    color: #333;
+    font-weight: bold;
+}
+
+/* 배송 정보 섹션 */
+#productBuyView #shippingInfo {
+    padding: 20px;
+    background: white;
+}
+
+#productBuyView #shippingInfo h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+#productBuyView .shippingField {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    	position: relative;
+}
+
+#productBuyView .productBuyImage {
+	width: 40px;
+	height: 40px;
+	margin-right: 19px;
+}
+
+/* 마이페이지 수정 인풋 */
+#productBuyView .shippingField input[type=text] {
+	padding: 13px 11px;
+	font-size: 16px;
+	border: 1px solid white;
+	box-sizing: border-box;
+	flex: 1;
+	border-radius: 0;
+	margin: 5px 0;
+	cursor: default;
+	border-bottom: 1px solid #e8e8e8;
+}
+
+#productBuyView .inBtn {
+	position: absolute;
+	padding: 7px 18px;
+	border: none;
+	border-radius: 100px;
+	cursor: pointer;
+	text-align: center;
+	color: white;
+	text-decoration: none;
+	font-size: 12px;
+	margin-right: 10px;
+	background-color: black;
+	right: 5px;
+}
+
+/* 결제 정보 섹션 */
+#productBuyView #paymentInfo {
+    padding: 20px;
+    background: white;
+}
+
+#productBuyView #paymentInfo h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+#productBuyView #orderTotal {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+
+#productBuyView #orderTotalLabel {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+#productBuyView #orderTotalValue {
+    font-size: 27px;
+    font-weight: 700;
+    color: #d9534f;
+}
+
+#productBuyView #paymentOptions {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 50px;
+}
+
+#productBuyView input[type="radio"] {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #dcdee0;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    margin-right: 10px;
+    outline: none;
+}
+
+/* 선택된 라디오 버튼 스타일 */
+#productBuyView input[type="radio"]:checked {
+    border-color: #007bff;
+    background-color: #007bff;
+}
+
+#productBuyView input[type="radio"]:checked::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 10px;
+    height: 10px;
+    background-color: white;
+    border-radius: 50%;
+}
+
+/* 라디오 버튼과 라벨 정렬 및 스타일링 */
+#productBuyView .paymentOption {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+    padding: 10px 0;
+    transition: background-color 0.3s ease;
+}
+
+#productBuyView label {
+    cursor: pointer;
+    font-size: 17px;
+    font-weight: 500;
+    color: #333;
+}
+
+#productBuyView #buyButtons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 25px;
+}
+
+#productBuyView #cancelButton, #productBuyView #confirmBuyButton {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+    color: #fff;
+    transition: background-color 0.3s;
+}
+
+#productBuyView #cancelButton {
+    background-color: #f0ad4e;
+}
+
+#productBuyView #cancelButton:hover {
+    background-color: #ec971f;
+}
+
+#productBuyView #confirmBuyButton {
+    background-color: #d9534f;
+}
+
+#productBuyView #confirmBuyButton:hover {
+    background-color: #c9302c;
+}

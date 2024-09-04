@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.finalProject.gym.dao.BoardDAO">
+  	<resultMap id="BoardResult" type="com.finalProject.gym.model.BoardVO" >
+  		<result property="boardNo" column="boardNo"  />
+  		<result property="boardCtg" column="boardCtg"  />
+	  	<result property="memId" column="memId"  />
+	  	<result property="memNick" column="memNick"  />
+	  	<result property="title" column="title"  />
+  		<result property="content" column="content"  />
+  		<result property="createdAt" column="createdAt"  />
+  		<result property="viewNum" column="viewNum"  />
+  		<result property="gymName" column="gymName"  />
+  	</resultMap>
+  	
+  	<resultMap id="CommentResult" type="com.finalProject.gym.model.CommentVO" >
+  		<result property="commentNo" column="commentNo"  />
+  		<result property="boardNo" column="boardNo"  />
+	  	<result property="memId" column="memId"  />
+	  	<result property="memNick" column="memNick"  />
+  		<result property="comment" column="comment"  />
+  		<result property="createdAt" column="createdAt"  />
+  		<result property="agreePoint" column="agreePoint"  />
+  		<result property="disagreePoint" column="disagreePoint"  />
+  	</resultMap>
+  
+    <select id="selectBoardPage" resultType="com.finalProject.gym.model.BoardVO">
+        SELECT *
+        FROM board
+        WHERE boardCtg = #{boardCtg} AND gymName IN
+        <foreach item="name" collection="gymNameList" open="(" separator="," close=")">
+        	#{name}
+        </foreach>
+        ORDER BY createdAt DESC, boardNo DESC
+        LIMIT #{limit} OFFSET #{offset}
+    </select>
+    
+    <select id="selectBoardCount" resultType="int">
+        SELECT COUNT(*) 
+        FROM board
+        WHERE boardCtg = #{boardCtg} AND gymName IN
+        <foreach item="name" collection="gymNameList" open="(" separator="," close=")">
+        	#{name}
+        </foreach>
+    </select>
+    
+    <!--게시글 작성-->
+    <insert id="writeInBoard" parameterType="com.finalProject.gym.model.BoardVO">
+    	insert board (title, content, memNick, memId, boardCtg, gymName)
+    	values (#{title}, #{content}, #{memNick}, #{memId}, #{boardCtg}, #{gymName})
+    </insert>
+    
+    <!--게시글 가져오기-->
+    <select id="getBoardContents" parameterType="int" resultMap="BoardResult">
+        select * from board where boardNo = #{boardNo}
+    </select>
+    
+    <!--게시글 지우기-->
+    <delete id="boardDelete" parameterType="int">
+    	delete 
+    	from board
+    	where boardNo = #{boardNo}
+    </delete>
+    
+    <!--게시글 수정-->
+    <update id="boardUpdate" parameterType="com.finalProject.gym.model.BoardVO">
+    	update board
+    	set title= #{title}, 
+    		content = #{content}
+    	where boardNo = #{boardNo}
+    </update>
+    
+    <!--게시글 조회수 증가-->
+    <update id="incrementViewCount" parameterType="int">
+    	update board
+    	set viewNum= viewNum + 1
+    	where boardNo = #{boardNo}
+    </update>
+    
+    <!--댓글 등록-->
+    <insert id="addCommentToBoardContent" parameterType="com.finalProject.gym.model.CommentVO">
+    	INSERT comment (boardNo, memNick, comment, memId)
+    	VALUES (#{boardNo}, #{memNick}, #{comment}, #{memId})
+    </insert>
+    
+    <!--댓글 가져오기-->
+    <select id="getComments" parameterType="int" resultMap="CommentResult">
+    	SELECT * 
+    	FROM comment
+    	WHERE boardNo = #{boardNo} 
+    	ORDER BY createdAt
+    </select>
+    
+    <!--내 글 가져오기-->
+    <select id="getMyBoards" resultType="com.finalProject.gym.model.BoardVO">
+        SELECT *
+        FROM board
+        WHERE memId = #{memId}
+        ORDER BY createdAt DESC, boardNo DESC
+        LIMIT #{limit} OFFSET #{offset}
+    </select>
+    
+    <select id="getTotalMyBoardCount" resultType="int">
+        SELECT COUNT(*) 
+        FROM board
+        WHERE memId = #{memId}
+    </select>
+</mapper>

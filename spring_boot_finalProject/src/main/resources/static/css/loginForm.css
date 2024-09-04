@@ -1,0 +1,74 @@
+@charset "UTF-8";
+
+/* 로그인 컨테이너 */
+#loginContainer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+/* 로그인 박스 */
+#loginBox{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 30px;
+	margin-top: 50px;
+}
+
+/* 로그인 제목 */
+#loginBox #loginTitle {
+	text-align: center;
+	font-size: 38px;
+	font-weight: 600;
+	padding-bottom: 50px;
+}
+
+/* 로그인 입력 박스 */
+#loginBox .loginInputBox input{
+	width: 400px;
+	padding: 15px 10px;
+	font-size: 16px;
+	border: 1px solid white;
+	border-bottom: 1px solid #e8e8e8;
+	margin-bottom: 20px;
+	box-sizing: border-box;
+}
+
+/* 로그인 플레이스 홀더 */
+#loginBox .loginInputBox input::placeholder {
+	color : #d8d8d8;
+}
+
+/* 로그인 옵션 (아이디 저장, 비밀번호 찾기) */
+#loginBox #loginOptions {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	margin-bottom: 45px;
+	font-size: 14px;
+}
+
+/* 체크박스 */
+#loginBox #idSave{
+	margin-right: 12px;
+}
+
+/* 비밀번호 찾기 */
+#loginBox #pwdSearch {
+	color : #007BFF;
+}
+
+/* 로그인 버튼 */
+#loginBox #loginButton input {
+	width: 100%;
+	padding: 15px;
+	font-size: 18px;
+	background-color: black;
+	color: white;
+	border: none;
+	border-radius: 1500px;
+	cursor: pointer;
+}

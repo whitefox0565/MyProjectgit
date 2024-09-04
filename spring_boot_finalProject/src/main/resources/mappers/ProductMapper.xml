@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.finalProject.gym.dao.IProductDAO">
+  	<resultMap id="productResult" type="com.finalProject.gym.model.ProductVO" >
+  		<result property="prdNo" column="prdNo"  />
+  		<result property="prdName" column="prdName"  />
+	  	<result property="memId" column="memId"  />
+	  	<result property="prdPrice" column="prdPrice"  />
+	  	<result property="prdMain" column="prdMain"  />
+  		<result property="prdDetail" column="prdDetail"  />
+  		<result property="prdImg" column="prdImg"  />
+  		<result property="ctgId" column="ctgId"  />
+  	</resultMap>
+  	
+  	<resultMap id="PrdBoardResult" type="com.finalProject.gym.model.PrdBoardVO" >
+  		<result property="prdBoardNo" column="prdBoardNo"  />
+  		<result property="prdBoardCtg" column="prdBoardCtg"  />
+	  	<result property="memId" column="memId"  />
+	  	<result property="memNick" column="memNick"  />
+	  	<result property="prdTitle" column="prdTitle"  />
+  		<result property="prdContent" column="prdContent"  />
+  		<result property="createdAt" column="createdAt"  />
+  		<result property="viewNum" column="viewNum"  />
+  	</resultMap>
+  	
+  	<resultMap id="CartResult" type="com.finalProject.gym.model.CartVO" >
+	  	<result property="cartNo" column="cartNo"  />
+	  	<result property="memId" column="memId"  />
+	  	<result property="prdNo" column="prdNo"  />
+  		<result property="prdSize" column="prdSize"  />
+  		<result property="cartQty" column="cartQty"  />
+  	</resultMap>
+  	
+  	<!--상품 등록-->
+  	<insert id="insertProduct" parameterType="com.finalProject.gym.model.ProductVO">
+  		INSERT product (prdName, prdPrice, prdMain, prdDetail, ctgId, memId, prdImg)
+  		VALUES (#{prdName}, #{prdPrice}, #{prdMain}, #{prdDetail}, #{ctgId}, #{memId}, #{prdImg})
+  	</insert>
+  	
+  	<!--상품 폼-->
+  	<select id="getCtgProduct" resultMap="productResult">
+  		SELECT *
+  		FROM product
+  		WHERE ctgId = #{ctgId}
+  		ORDER BY prdName
+  		LIMIT #{limit} OFFSET #{offset}
+  	</select>
+  	
+  	<!--카테고리별 상품 개수 가져오기 -->
+  	<select id="getTotalProductCount" resultType="int">
+  		SELECT COUNT(*)
+  		FROM product
+  		WHERE ctgId = #{ctgId}
+  	</select>
+  	
+  	<!--상품 상세 조회-->
+  	<select id="getProductDetail" parameterType="int" resultMap="productResult">
+  		SELECT *
+  		FROM product
+  		WHERE prdNo = #{prdNo}
+  	</select>
+  	
+  	<!--상품 게시판-->
+  	<select id="getPrdBoard" resultMap="PrdBoardResult">
+  		SELECT *
+  		FROM prdBoard
+  		WHERE prdBoardCtg = #{ctgId} AND prdNo = #{prdNo}
+  		ORDER BY createdAt DESC
+  		LIMIT #{limit} OFFSET #{offset}
+  	</select>
+  	
+  	<!--카테고리별 상품 개수 가져오기 -->
+  	<select id="getTotalPrdBoardCount" resultType="int">
+  		SELECT COUNT(*)
+  		FROM prdBoard
+  		WHERE prdBoardCtg = #{ctgId} AND prdNo = #{prdNo}
+  	</select>
+  	
+  	<!--상품 상세 게시판 내용 가져오기-->
+  	<select id="getPrdBoardContent" parameterType="int" resultMap="PrdBoardResult">
+  		SELECT prdContent, memId, viewNum
+  		FROM prdBoard
+  		WHERE prdBoardNo = #{prdBoardNo}
+  	</select>
+  	
+  	<!--상품 상세 게시판 글쓰기-->
+  	<insert id="writeInPrdBoard" parameterType="com.finalProject.gym.model.PrdBoardVO">
+  		INSERT prdBoard (prdBoardCtg, prdTitle, prdContent, memNick, memId, prdNo)
+  		VALUES (#{prdBoardCtg}, #{prdTitle}, #{prdContent}, #{memNick}, #{memId}, #{prdNo})
+  	</insert>
+  	
+  	<!--상품 상세 게시판 글삭제-->
+  	<delete id="prdBoardDelete" parameterType="int">
+  		DELETE
+  		FROM prdBoard
+  		WHERE prdBoardNo = #{prdBoardNo}
+  	</delete>
+  	
+  	<update id="incrementViewCount" parameterType="int">
+  		UPDATE prdBoard
+    	SET viewNum= viewNum + 1
+    	WHERE prdBoardNo = #{prdBoardNo}
+  	</update>
+  	
+  	<!--상품 삭제-->
+  	<delete id="prdDelete" parameterType="int">
+  		DELETE
+  		FROM product
+  		WHERE prdNo = #{prdNo}
+  	</delete>
+  	
+  	<!--상품 검색 결과-->
+  	<select id="getPrdSearchResult" resultMap="productResult">
+  		SELECT *
+  		FROM product
+  		WHERE ctgId LIKE CONCAT('%', #{keyword}, '%') 
+  		OR prdName LIKE CONCAT('%', #{keyword}, '%')
+  		ORDER BY prdName
+  		LIMIT #{limit} OFFSET #{offset}
+  	</select>
+  	
+  	<!--상품 검색 결과 개수 가져오기 -->
+  	<select id="getTotalProductSearchCount" resultType="int">
+  		SELECT COUNT(*)
+  		FROM product
+  		WHERE ctgId LIKE CONCAT('%', #{keyword}, '%') 
+  		OR prdName LIKE CONCAT('%', #{keyword}, '%')
+  	</select>
+  	
+  	<!--상품 수정-->
+  	<update id="updateProduct" parameterType="com.finalProject.gym.model.ProductVO">
+  		UPDATE product
+  		SET prdName = #{prdName}, prdDetail = #{prdDetail},
+  			prdMain = #{prdMain}, prdPrice = #{prdPrice},
+  			prdImg = #{prdImg}, ctgId = #{ctgId}
+  		WHERE prdNo = #{prdNo}
+  	</update>
+  	
+  	<!--장바구니에 동일 물품 있는지 확인-->
+  	<select id="prdNoCheck" parameterType="com.finalProject.gym.model.CartVO" resultType="boolean">
+  		SELECT EXISTS (
+  			SELECT 1
+  			FROM cart
+  			WHERE prdNo = #{prdNo} AND memId = #{memId} AND prdSize = #{prdSize}
+  		)
+  	</select>
+  	
+  	<!--장바구니에 새 상품 추가-->
+  	<insert id="addPrdCart" parameterType="com.finalProject.gym.model.CartVO">
+  		INSERT cart (memId, prdNo, prdSize, cartQty)
+  		VALUES (#{memId}, #{prdNo}, #{prdSize}, #{cartQty})
+  	</insert>
+  	
+  	<!--장바구니에 이미 있는 물품 추가-->
+  	<update id="updatePrdCart" parameterType="com.finalProject.gym.model.CartVO">
+  		UPDATE cart
+  		SET prdSize = #{prdSize},
+  			cartQty = cartQty + #{cartQty}
+  		WHERE prdNo = #{prdNo} AND memId = #{memId} AND prdSize = #{prdSize}
+  	</update>
+  	
+  	<!--내 장바구니 가져오기-->
+  	<select id="getPrdInMyCart" parameterType="String" resultType="com.finalProject.gym.model.CartVO">
+  		SELECT p.prdNo, p.prdName, p.prdPrice, p.prdImg, c.cartNo, c.prdSize, c.cartQty
+  		FROM product p, cart c
+  		WHERE p.prdNo = c.prdNo AND c.memId = #{memId}
+  		ORDER BY p.prdName
+  	</select>
+  	
+  	<!--장바구니 상품 삭제-->
+  	<delete id="deletePrdInMyCart" parameterType="int">
+  		DELETE 
+  		FROM cart
+  		WHERE cartNo = #{cartNo}
+  	</delete>
+  	
+  	<!--상품 수량 변경-->
+  	<update id="changePrdQty" parameterType="int">
+  		UPDATE cart
+  		SET cartQty = #{cartQty}
+  		WHERE cartNo = #{cartNo}
+  	</update>
+  	
+  	<!--상품 사이즈 변경-->
+  	<update id="changePrdSize">
+  		UPDATE cart
+  		SET prdSize = #{prdSize}
+  		WHERE cartNo = #{cartNo}
+  	</update>
+  	
+  	<!--결제 페이지-->
+  	<select id="myCartSendOrder" resultType="com.finalProject.gym.model.CartVO">
+  		SELECT p.prdNo, p.prdName, p.prdPrice, p.prdImg, c.cartNo, c.prdSize, c.cartQty
+  		FROM product p
+  		JOIN cart c ON p.prdNo = c.prdNo
+  		WHERE cartNo IN
+  		<foreach item="no" collection="cartArr" open="(" separator="," close=")">
+  			#{no}
+  		</foreach>
+  		ORDER BY p.prdName
+  	</select>
+  	
+  	<!--주문번호 생성-->
+  	<select id="ordNoChk" parameterType="int" resultType="boolean">
+  		SELECT EXISTS (
+  			SELECT 1
+  			FROM order_info
+  			WHERE ordNo = #{no}
+  		)
+  	</select>
+  	
+  	<!--주문-->
+  	<insert id="order" parameterType="com.finalProject.gym.model.OrderVO">
+  		INSERT order_info (ordNo, memId, ordReceiver, ordZipcode, ordAddress1, ordAddress2, ordRcvPhone, ordRcvMsg, ordPayOption, ordPay)
+  		VALUES (#{ordNo}, #{memId}, #{ordReceiver}, #{ordZipcode}, #{ordAddress1}, #{ordAddress2}, #{ordRcvPhone}, #{ordRcvMsg}, #{ordPayOption}, #{ordPay})
+  	</insert>
+  	
+  	<!--주문상품 등록-->
+  	<insert id="insertOrderPrd" parameterType="com.finalProject.gym.model.OrderVO">
+  		INSERT order_product (ordNo, prdNo, ordQty, ordOption)
+  		VALUES (#{ordNo}, #{prdNo}, #{ordQty}, #{ordOption})
+  	</insert>
+  	
+  	<delete id="deleteMyCartAfterOrder">
+  		DELETE
+  		FROM cart
+  		WHERE cartNo IN
+  		<foreach item="no" collection="cartNoList" open="(" separator="," close=")">
+  			#{no}
+  		</foreach>
+  	</delete>
+  	
+  	<!--cartNo 가져오기-->
+  	<select id="nowOrdGetCartNo" parameterType="com.finalProject.gym.model.CartVO" resultType="int">
+  		SELECT cartNo
+  		FROM cart
+  		WHERE memId = #{memId} AND prdNo = #{prdNo} AND prdSize = #{prdSize}
+  	</select>
+  	
+  	<!--주문 내역-->
+  	<select id="getMyOrderHistory" parameterType="String" resultType="com.finalProject.gym.model.OrderVO">
+  		SELECT o.ordNo, o.ordDate, o.ordPay, o_p.prdNo, o_p.ordQty, o_p.ordOption
+  		FROM order_info o
+  		JOIN order_product o_p ON o.ordNo = o_p.ordNo
+  		WHERE o.memId = #{memId}
+  		ORDER BY ordDate DESC
+  	</select>
+  </mapper>

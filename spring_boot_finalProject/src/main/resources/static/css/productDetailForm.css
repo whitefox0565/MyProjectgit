@@ -1,0 +1,550 @@
+#productDetailView {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#productDetailView #productDetailViewContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 30px;
+    margin-top: 50px;
+}
+
+#productDetailView #productDetailTitleBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 85px;
+}
+
+#productDetailView #productDetailTitle {
+    text-align: center;
+    font-size: 38px;
+    font-weight: 600;
+    padding-bottom: 20px;
+}
+
+#productDetailView #productDetailSubTitle {
+    text-align: center;
+    font-size: 19px;
+    letter-spacing: 2px;
+    font-weight: 450;
+    padding-bottom: 10px;
+    color: #a7a7a7;
+}
+
+#productDetailView #productDetailMain {
+    display: flex;
+    gap: 40px;
+    margin-top : 20px;
+    margin-bottom: 50px;
+    width:1100px;
+}
+
+#productDetailView #productDetailImage {
+    width: 100%;
+    height: auto;
+    max-width: 400px;
+}
+
+#productDetailView #productDetailInfoBox {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+   	margin-left: 45px;
+   	flex-grow: 1;
+}
+
+#productDetailView #productDetailNameBox {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+#productDetailView #productDetailName {
+    font-size: 30px;
+    font-weight: bold;
+    color: #333;
+}
+
+#productDetailView #productDetailCommentLinkDown {
+	display: flex;
+	align-items: center;
+	font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+#productDetailView #productDetailCommentImage {
+    width: 15px;
+    height: auto;
+    margin-right: 10px;
+}
+
+#productDetailView #productDetailGoodsInfo {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+ 	padding: 50px 0 60px 0;
+ 	border-top: 1px solid #e5e5e5;
+	border-bottom: 1px solid #e5e5e5;
+}
+
+#productDetailView .productDetailGoodsRows {
+	display: flex;
+}
+
+#productDetailView .productDetailCategory {
+	font-weight:500;
+	font-size:17px;
+	color: #555555;
+	width: 120px;
+}
+
+#productDetailView .productDetailcontents {
+	font-weight:500;
+	font-size:18px;
+}
+
+#productDetailView #productDetailPrice {
+	text-align: right;
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+}
+
+#productDetailView .productDetailSelect {
+	display:flex;
+}
+
+/* 회비납부 서브 메뉴 */
+#productDetailView .productDetailSubSelect {
+	width: 150px;
+	display : none;
+	flex-direction: column;
+	border : 1px solid whitesmoke;
+	border-radius : 8px;
+	position: absolute;
+	margin-top : 35px;
+	padding: 10px;
+	box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+	background-color : white;
+	height: 160px; /* 원하는 height 설정 */
+	overflow-y: scroll; /* 수직 스크롤 활성화 */
+	z-index: 1000;
+}
+
+#productDetailView .productDetailSelectPlaceholder {
+	display: flex;
+	align-items: center;
+	gap: 15px;
+	cursor: pointer;
+	border-radius:10px; 
+	transition: background-color 0.1s ease-out;
+	padding: 0 5px 0 1px;
+}
+
+#productDetailView .productDetailSubSelectEach {
+	display: flex;
+	padding: 10px;
+	border-radius : 10px;
+	font-size: 14px;
+	transition: background-color 0.1s ease-out;
+	color : #1b2631;
+	cursor: pointer;
+}
+
+#productDetailView .productDetailDown {
+	content: "";
+	width: 6px;
+	height: 6px;
+	transform: rotate(-135deg);
+	border-top: 1px solid #333;
+	border-left: 1px solid #333;
+}
+
+/* 회비납부 스크롤바 */
+#productDetailView .productDetailSubSelect::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+	border-radius: 10px;
+	background-color: #F5F5F5;
+}
+
+#productDetailView .productDetailSubSelect::-webkit-scrollbar {
+	width: 12px;
+	background-color: #F5F5F5;
+}
+
+#productDetailView .productDetailSubSelect::-webkit-scrollbar-thumb {
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+	background-color: #c4c4c4;
+}
+
+
+#productDetailView #productDetailQuantityBox {
+	display: flex;
+	justify-content: space-between;
+}
+
+#productDetailView #productDetailQuantity {
+	display: flex;
+}
+
+#productDetailView #productDetailQuantityMinus, #productDetailView #productDetailQuantityplus {
+    width: 30px;
+    height: 30px;
+    background-color: #c2c2c2;
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 30px; 
+    border-radius: 50%; 
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.3s ease;
+}
+
+#productDetailView #productDetailQuantityMinus:hover, #productDetailView #productDetailQuantityplus:hover {
+    background-color: #a2a2a2; /* 호버 시 색상 변경 */
+}
+
+#productDetailView #productDetailQuantityNumber {
+    font-size: 18px;
+    width: 50px;
+    text-align: center;
+}
+
+#productDetailView #productDetailSumPrice {
+    font-weight:600;
+	font-size:19px;
+}
+
+#productDetailView #productDetailTotalPriceBox {
+	display: flex;
+	justify-content: space-between;
+	padding-top : 20px;
+	border-top: 1px solid #e5e5e5;
+}
+
+#productDetailView #productDetailTotalPrice {
+    font-weight:500;
+	font-size:22px;
+}
+
+#productDetailView #productDetailTotalPriceNumber {
+    font-weight:700;
+	font-size:25px;
+}
+
+
+#productDetailView #productDetailButtons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-top : 30px;
+}
+
+#productDetailView #buyNowButton {
+    display: flex;
+}
+
+#productDetailView #addToCartButton , #productDetailView #buyNowButton{
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+    color: #fff;
+}
+
+#productDetailView #addToCartButton {
+    background-color: #f0ad4e;
+}
+
+#productDetailView #addToCartButton a, #productDetailView #buyNowButton a{
+	color : white;
+}
+#productDetailView #addToCartButton:hover {
+    background-color: #ec971f;
+}
+
+#productDetailView #buyNowButton{
+    background-color: #d9534f;
+}
+
+#productDetailView #buyNowButton:hover {
+    background-color: #c9302c;
+}
+
+#productDetailView #productDetailAdditionalImages {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+    margin-top: 50px;
+}
+
+#productDetailView #productDetailAdditionalImages h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+
+#productDetailView .productDetailImg {
+    width: 100%;
+    max-width: 800px;
+}
+
+/* --------------------------------------------------- 후기 ---------------------------------- */
+
+
+#productDetailView #productDetailCommentContainer {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding: 30px;
+	margin-top: 50px;
+}
+
+#productDetailView #productDetailMenuBox {
+	display: flex;
+	align-items: center;
+	margin-bottom: 30px;
+	gap: 20px;
+	
+}
+
+/*수정한 부분*/
+#productDetailCommentLinkUp {
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-left: 700px; /* 오른쪽 끝으로 배치 */
+}
+/*수정한 부분 */
+
+#productDetailView .productDetailMenuEach {
+	padding: 17px 0px 15px 20px;
+	cursor: pointer;
+	font-size: 18px;
+	border-radius: 10px;
+}
+
+#productDetailView #productDetailButtonBox {
+	display: flex;
+	margin: 30px 100px 00px 0px;
+	justify-content: flex-end;
+}
+
+#productDetailView .productDetailWriteButton {
+    margin-left: 25px;
+}
+
+#productDetailView .productDetailWriteButton a {
+    padding: 5px 20px;
+    background-color: #c2c2c2;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 1500px;
+    font-size:16px;
+}
+
+#productDetailView .productDetailWriteButton a:hover {
+    background-color: #a2a2a2;
+}
+
+
+#productDetailView #productDetailBoardList {
+    display: flex;
+    flex-direction: column;
+    padding:0 100px;
+    width:900px;
+}
+
+#productDetailView .productDetailBoardListRow {
+    display: flex;
+    align-items:center;
+}
+
+#productDetailView .productDetailBoardCell {
+    padding: 10px 5px;
+    flex-shrink: 0; /* 셀의 너비를 고정하기 위해 추가 */
+    text-align: left;
+    overflow: hidden; /* 내용이 넘칠 때 숨김 */
+    white-space: nowrap; /* 텍스트를 한 줄로 제한 */
+    text-overflow: ellipsis; /* 넘친 텍스트에 '...' 표시 */
+}
+
+#productDetailView .productDetailBoardCtg {
+    width: 80px;
+    display:flex;
+    justify-content: center;
+}
+
+#productDetailView #productDetailBoardCtgEach {
+   background-color: #727a8f;
+   padding: 12px 10px;
+   border-radius:100%;
+   color : white;
+   font-weight:500;
+   font-size:13px;
+}
+
+#productDetailView .productDetailBoardTitle {
+   width: 440px;
+   padding-right:50px;
+}
+
+#productDetailView .productDetailBoardTitle input[type=text] {
+	font-size: 16px;
+	border: 1px solid white;
+	cursor:pointer;
+}
+
+#productDetailView .productDetailBoardTitle input[type=text]:focus {
+	outline: none;
+}
+
+#productDetailView .productDetailBoardNick {
+	width:100px;
+	padding-right:30px;
+}
+
+#productDetailView .productDetailBoardTime {
+	width:70px;
+	padding-right:30px;
+}
+
+#productDetailView .productDetailBoardView {
+	width:60px;
+}
+
+#productDetailView .productDetailImage {
+	width:15px;
+	height: 15px;
+	margin-right: 10px;
+}
+#productDetailView .productDetailContentEach {
+    border: 1px solid #f8f8f8;
+    display: none;
+    flex-direction: column;
+    cursor: auto;
+    border-radius: 12px;
+    gap: 5px;
+    transition: background-color 0.1s ease-out;
+    padding: 25px 25px 25px 25px;
+    background-color: #f8f8f8;
+    font-weight: 500;
+    width: 768px;
+    margin: 20px 20px 40px 40px;
+    min-height: 100px;
+}
+
+#productDetailView #productDetailSubModify {
+	width: 100%; display : flex;
+	justify-content: flex-end;
+	display: flex;
+}
+
+#productDetailView #productDetailSubModifyBox {
+	display: flex;
+	border: 1px solid #f3f3f3;
+	border-radius: 100px;
+	margin-top: 5px;
+	background-color: white;
+}
+
+#productDetailView .productDetailSubContents {
+	display: flex;
+	align-items: center;
+	padding: 0 60px 0 0;
+}
+
+
+#productDetailView #productDetailPencil {
+	width: 32px;
+	height: 32px;
+	cursor: pointer;
+	padding: 10px 15px;
+	margin: 2px;
+}
+
+#productDetailView #productDetailSave {
+	width: 26px;
+	height: 26px;
+	cursor: pointer;
+	padding: 10px 18px;
+	margin: 2px;
+	display: none;
+}
+
+#productDetailView #subSaveBtn {
+	display: none;
+}
+
+#productDetailView #productDetailDelete {
+	width: 26px;
+	height: 26px;
+	cursor: pointer;
+	padding: 10px 15px;
+	margin: 2px;
+	margin-top: 4px;
+}
+
+#productDetailView #productDetailsubSaveBtn {
+	display: none;
+}
+
+#productDetailView .productDetailPagination {
+    margin-top: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#productDetailView .productDetailPagination a {
+    margin: 0 10px;
+    padding: 5px 12px;
+    color: #000;
+    border-radius: 100%
+}
+
+#productDetailView .productDetailPagination a.active {
+    font-weight: bold;
+    background-color: #c2c2c2;
+    color: #fff;
+}
+
+/* 메뉴 화살표 */
+#productDetailView .productDetailPaginationMove {
+	display:flex;
+	gap:3px;
+	padding:20px 20px;
+	margin: 0px 5px;
+	cursor: pointer;
+}
+
+/* 메뉴 화살표 */
+#productDetailView .productDetailPaginationDoubleLeft {
+	content: "";
+	width: 6px;
+	height: 6px;
+	transform: rotate(-45deg);
+	border-top: 1px solid #333;
+	border-left: 1px solid #333;
+}
+
+#productDetailView .productDetailPaginationDoubleRight {
+	content: "";
+	width: 6px;
+	height: 6px;
+	transform: rotate(135deg);
+	border-top: 1px solid #333;
+	border-left: 1px solid #333;
+}

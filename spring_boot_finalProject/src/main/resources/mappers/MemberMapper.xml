@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.finalProject.gym.dao.IMemberDAO">
+  	<resultMap id="memResult" type="com.finalProject.gym.model.MemberVO" >
+  		<result property="memId" column="memId"  />
+  		<result property="memName" column="memName"  />
+  		<result property="memNick" column="memNick"  />
+  		<result property="memEmail" column="memEmail"  />
+  		<result property="memJoinDate" column="memJoinDate"  />
+  		<result property="memZipcode" column="memZipcode"  />
+  		<result property="memAddress1" column="memAddress1"  />
+  		<result property="memAddress2" column="memAddress2"  />
+  		<result property="memImgNo" column="memImgNo"  />
+  		<result property="pointX" column="pointX"  />
+  		<result property="pointY" column="pointY"  />
+  		<result property="memCtg" column="memCtg"  />
+  		<result property="gymNo" column="gymNo"  />
+  		<result property="gymName" column="gymName"  />
+  		<result property="gymHp" column="gymHp"  />
+  		<result property="gymPrice" column="gymPrice"  />
+  	</resultMap>
+  	
+  	<!-- 회원등록 -->
+  	<insert id="joinMember" parameterType="com.finalProject.gym.model.MemberVO">
+  		INSERT member(memId, memPwd, memName, memEmail, memHp, memZipcode, memAddress1, memAddress2, memNick, memImgNo, pointX, pointY, gymNo, gymHp, gymName, gymPrice)						     
+  	    VALUES(#{memId}, #{memPwd}, #{memName}, #{memEmail},#{memHp}, #{memZipcode}, #{memAddress1}, #{memAddress2}, #{memNick}, #{memImgNo}, #{pointX}, #{pointY}, #{gymNo}, #{gymHp}, #{gymName}, #{gymPrice})           
+  	</insert>
+  	
+  	<!--Id 중복확인-->
+  	<select id="joinMemIdCheck" parameterType="String" resultType="String">
+  		select memId from member where memId = #{memId}
+  	</select>
+  	
+  	<!--닉네임 중복확인-->
+  	<select id="joinMemNickChk" parameterType="String" resultType="String">
+  		select memNick from member where memNick = #{memNick}
+  	</select>
+  	
+  	<!--로그인-->
+  	<select id="login" parameterType="String" resultMap="memResult">
+  		select memPwd, memNick, memEmail, memImgNo from member where memId = #{memId}
+  	</select>
+  	
+  	<!--마이페이지-->
+  	<select id="getMemData" parameterType="String" resultMap="memResult">
+  		select * from member where memId = #{memId}
+  	</select>
+  	
+  	<!--마이페이지 이미지 업데이트-->
+  	<update id="updateMemImgNo" parameterType="String">
+  		update member set memImgNo=#{fileName} where memId = #{memId}
+  	</update>
+  	
+  	<!--마이페이지 정보 업데이트-->
+  	<update id="myPageUpdate" parameterType="com.finalProject.gym.model.MemberVO">
+  		update member 
+  		set memNick=#{memNick}, memHp=#{memHp}, memName=#{memName}, memEmail=#{memEmail}, memZipcode=#{memZipcode}, memAddress1=#{memAddress1}, memAddress2=#{memAddress2}, pointX=#{pointX}, pointY=#{pointY} 
+  		where memId = #{memId}
+  	</update>
+  	
+  	<!--회원탈퇴-->
+  	<delete id="memDeleteAccount" parameterType="String">
+  		delete from member where memId=#{memId};
+  	</delete>
+  	
+  	<!--닉네임 가져오기-->
+  	<select id="getMemNick" parameterType="String" resultType="String">
+  		SELECT memNick
+        FROM member
+        WHERE memId = #{memId}
+  	</select>
+
+	<!--도장 번호 중복 체크-->
+	<select id="gymNoChk" parameterType="String" resultType="String">
+		SELECT gymNo
+		FROM member
+		WHERE gymNo = #{gymNo}
+	</select>
+  </mapper>
+  
+  
+  
+  
+  

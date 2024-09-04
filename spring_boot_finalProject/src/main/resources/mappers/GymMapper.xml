@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.finalProject.gym.dao.IGymDAO">
+  	<resultMap id="gymResult" type="com.finalProject.gym.model.MemberVO" >
+	  	<result property="memId" column="memId"  />
+	  	<result property="memName" column="memName"  />
+	  	<result property="memNick" column="memNick"  />
+  		<result property="memEmail" column="memEmail"  />
+  		<result property="memHp" column="memHp"  />
+  		<result property="memZipcode" column="memZipcode"  />
+  		<result property="memAddress1" column="memAddress1"  />
+  		<result property="memAddress2" column="memAddress2"  />
+  		<result property="memImgNo" column="memImgNo"  />
+  		<result property="pointX" column="pointX"  />
+  		<result property="pointY" column="pointY"  />
+  		<result property="gymNo" column="gymNo"  />
+  		<result property="gymName" column="gymName"  />
+  		<result property="gymHp" column="gymHp"  />
+  		<result property="gymPrice" column="gymPrice"  />
+  	</resultMap>
+  	
+  	<!--체육관 정보 가져오기-->
+  	<select id="getGymData" parameterType="String" resultMap="gymResult">
+  		select * from member where memId = #{memId}
+  	</select>
+  	
+  	<!--체육관 전체 리스트 출력-->
+  	<select id="getAllGymPosition" resultMap="gymResult">
+  		select memAddress1, pointX, pointY, gymNo, gymName, gymPrice, gymHp from member
+  		WHERE gymNo IS NOT null
+  	</select>
+  	
+  	<!--체육관 관원 등록 리스트 출력-->
+  	<select id="getAllGymName" resultMap="gymResult">
+  		select gymName from member order by gymName
+  	</select>
+  	
+  	<!--체육관 정보 출력-->
+  	<select id="getGymDataByName" parameterType="String" resultMap="gymResult">
+  		select memName, memHp, memAddress1, pointX, pointY, gymNo, gymHp from member where gymName = #{gymName}
+  	</select>
+  	
+  	<!--체육관 이름 검색 조회-->
+  	<select id="gymNameSearch" parameterType="String" resultMap="gymResult">
+  		select gymName from member where REPLACE(gymName," ", "") LIKE CONCAT('%', #{searchWord}, '%')
+  		order by gymName
+  	</select>
+  	
+  	<!--체육관 이름 검색 조회-->
+  	<select id="getGymPriceByGymName" parameterType="String" resultMap="gymResult">
+  		SELECT gymPrice
+  		FROM member
+  		WHERE gymName = #{gymName}
+  	</select>
+  	
+  	<!--업주 계정인지 확인-->
+  	<select id="getGymNo" parameterType="String" resultType="String">
+  		SELECT gymNo
+  		FROM member
+  		WHERE memId = #{memId}
+  	</select>
+  	
+</mapper>

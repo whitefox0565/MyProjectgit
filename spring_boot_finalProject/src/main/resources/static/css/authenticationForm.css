@@ -1,0 +1,74 @@
+@charset "UTF-8";
+
+@charset "UTF-8";
+
+/* 인증 컨테이너 */
+#authenticationContainer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+/* 인증 박스 */
+#authenticationBox {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 30px;
+}
+
+/* 인증 제목 */
+#authenticationBox #authenticationTitle {
+	text-align: center;
+	font-size: 38px;
+	font-weight: 600;
+	padding-bottom: 130px;
+}
+
+
+/* 인증 입력 박스 */
+#authenticationBox .authenticationInputBox {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+/* 인증 입력 박스 */
+#authenticationBox .authenticationInputBox input {
+	width: 400px;
+	padding: 15px 10px;
+	font-size: 16px;
+	border: 1px solid white;
+	border-bottom: 1px solid #e8e8e8;
+	margin: 10px 0;
+	box-sizing: border-box;
+}
+
+/* 인증 플레이스 홀더 */
+#authenticationBox .authenticationInputBox input::placeholder {
+	color: #d8d8d8;
+}
+
+/* 인증 버튼 */
+#authenticationBox button {
+	position:absolute;
+    padding: 7px 18px;
+    border: none;
+    border-radius: 100px;
+    cursor: pointer;
+    text-align: center;
+    color: white;
+    text-decoration: none;
+    font-size: 12px;
+    margin-right: 10px;
+    background-color: black;
+}
+
+/* 인증 결과 */
+#authenticationBox #authenticationResult {
+	margin-top: 20px;
+	font-size: 16px;
+	color: red;
+	text-align: center;
+}
