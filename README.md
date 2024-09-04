@@ -21,5 +21,13 @@
 <img src="https://github.com/user-attachments/assets/931ea186-ff66-4aa2-a415-1f6bed9b6d6e">
 <h2>내 자녀 등록</h2>
 <img src="https://github.com/user-attachments/assets/bd4bc200-ac1e-474e-bfe5-53d133ae5f22">
+<h2>자녀 체육관 등록</h2>
+<img src="https://github.com/user-attachments/assets/7d6ab805-b76b-4509-8cc2-2d4ab3a3d34f">
 <h2>체육관 정보</h2>
+<img src="https://github.com/user-attachments/assets/0ffebbec-1e14-47fa-8756-266ff1b559b3">
+<h2>상품</h2>
+<img src="https://github.com/user-attachments/assets/0ffebbec-1e14-47fa-8756-266ff1b559b3">
+<h2>상품 상세 및 후기</h2>
+<img src="https://github.com/user-attachments/assets/0ffebbec-1e14-47fa-8756-266ff1b559b3">
+
 
