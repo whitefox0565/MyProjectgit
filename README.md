@@ -10,9 +10,12 @@
 <img src="https://github.com/user-attachments/assets/99454ddd-0688-4268-a706-5fc71196a4b2">
 <img src="https://github.com/user-attachments/assets/37121136-5fac-443e-804f-cf64ccdf7195" width="500" height="500">
 <img src="https://github.com/user-attachments/assets/8fddf521-22bb-4c3c-9860-7cd0671eedd6" width="500" height="500">
-![signUpFail1]()
 <h3>가입시 조건 성공</h3>
 <img src="https://github.com/user-attachments/assets/e59dc334-b0b4-4469-abf8-9c2bec6ecdad">
 </br>
 <h2>로그인</h2>
+<img src="https://github.com/user-attachments/assets/9fb2af95-019b-4beb-a6c0-6f6b48b31d7b">
+<h2>마이페이지</h2>
+<h3>이미지 변경 및 정보 수정</h3>
+
 
