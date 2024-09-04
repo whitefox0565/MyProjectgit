@@ -1,3 +1,3 @@
 <h2>메인화면</h2>
-![Untitled_Project_V1](https://github.com/user-attachments/assets/373e9b72-5f35-4c67-b086-e6a9413691c4)
+<img src="https://github.com/user-attachments/assets/caf2de3a-8598-45c1-9313-d05dfb0234e8">
 
